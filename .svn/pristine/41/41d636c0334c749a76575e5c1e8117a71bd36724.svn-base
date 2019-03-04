@@ -1,0 +1,22 @@
+package com.weiboyi.bi.workflow;
+
+import java.sql.SQLException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.sql.DriverManager;
+
+public class SyncPriceName {
+    private static final String driverName = "org.apache.hive.jdbc.HiveDriver";
+
+    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+        Class.forName(driverName);
+
+        Connection con = DriverManager.getConnection("jdbc:hive2://192.168.1.111:10000/default", "hive", "hive");
+        Statement stmt = con.createStatement();
+        ResultSet res = stmt.executeQuery("show tables");
+        if (res.next()) {
+            System.out.println(res.getString(1));
+        }
+    }
+}

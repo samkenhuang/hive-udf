@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+/usr/local/program/apache-maven-3.5.2/bin/mvn clean package
+scp target/huangxin-hive-1.0-SNAPSHOT-shaded.jar hive@192.168.1.111:/usr/local/apache-hive-2.3.2-bin/lib
